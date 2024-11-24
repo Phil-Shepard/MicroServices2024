@@ -6,3 +6,10 @@
 /AppLibrary/build/tmp/
 /AppLibrary/build/generated/
 /AppLibrary/build/classes/
+## MailSender
+/MailSender/.gradle
+/MailSender/build/tmp/
+/MailSender/build/generated/
+/MailSender/build/classes/
+/MailSender/build/resources
+/MailSender/src/main/resources/secret.properties
