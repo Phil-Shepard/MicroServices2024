@@ -1,2 +1,8 @@
 # Project exclude paths
 /target/
+/.idea/
+## AppLibrary
+/AppLibrary/.gradle
+/AppLibrary/build/tmp/
+/AppLibrary/build/generated/
+/AppLibrary/build/classes/
