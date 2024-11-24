@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: EurekaServer
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:8011/eureka
+logging:
+  level:
+    com:
+      netflix:
+        eureka: off
+        discovery: off
+server:
+  port: 8001
