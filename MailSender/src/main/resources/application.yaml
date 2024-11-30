@@ -2,13 +2,15 @@ spring:
   application:
     name: MailSender
   kafka:
-    prefix: mail-sender
-    confirm-email: confirm-email
+    bootstrap-servers: localhost:9092
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8001/eureka
   instance:
     hostname: localhost
+kafka:
+  prefix: mail-sender
+  confirm-email: confirm-email
 server:
   port: 0

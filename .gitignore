@@ -13,3 +13,5 @@
 /MailSender/build/classes/
 /MailSender/build/resources
 /MailSender/src/main/resources/secret.properties
+/MailSender/build/reports
+/MailSender/build/test-results

@@ -15,17 +15,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class ConfirmEmailKafkaListener {
     private EmailService emailService;
-    @Value(value = "${spring.kafka.prefix}." + "${spring.kafka.confirm-email}")
-    private String confirmEmailTopicName;
 
     @Autowired
     public ConfirmEmailKafkaListener(EmailService emailService) {
         this.emailService = emailService;
     }
 
-    @KafkaListener(topics = "${spring.kafka.prefix}." + "${spring.kafka.confirm-email}", groupId = "group1")
+    @KafkaListener(topics = "${kafka.prefix}." + "${kafka.confirm-email}", groupId = "group1")
     void sendConfirmCode(String emailMessage) {
-        System.out.println(confirmEmailTopicName);
         emailService.sendMessage(EmailMessage.fromJson(emailMessage));
     }
 }

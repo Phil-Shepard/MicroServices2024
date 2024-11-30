@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class TopicsConfig {
-    @Value(value = "${spring.kafka.prefix}." + "${spring.kafka.confirm-email}")
+    @Value(value = "${kafka.prefix}." + "${kafka.confirm-email}")
     private String confirmEmailTopicName;
     @Bean
     public NewTopic confirmEmail() {
