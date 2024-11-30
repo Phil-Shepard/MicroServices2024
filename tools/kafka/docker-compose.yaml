@@ -1,6 +1,8 @@
 version: '4.9'
 services:
   zookeeper:
+    hostname: zookeeper
+    container_name: zookeeper
     image: confluentinc/cp-zookeeper:latest
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
@@ -9,6 +11,8 @@ services:
       - 22181:2181
 
   kafka:
+    hostname: kafka
+    container_name: kafka
     image: confluentinc/cp-kafka:latest
     depends_on:
       - zookeeper
