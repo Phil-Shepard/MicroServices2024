@@ -1,3 +1,5 @@
+server:
+  port: 9090
 spring:
   application:
     name: ApiGateway
@@ -9,8 +11,3 @@ eureka:
       defaultZone: http://localhost:8001/eureka
   instance:
     hostname: localhost
-kafka:
-  prefix: mail-sender
-  confirm-email: confirm-email
-server:
-  port: 9090
