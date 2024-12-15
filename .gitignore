@@ -15,3 +15,12 @@
 /MailSender/src/main/resources/secret.properties
 /MailSender/build/reports
 /MailSender/build/test-results
+## UserService
+/UserService/.gradle
+/UserService/build/tmp/
+/UserService/build/generated/
+/UserService/build/classes/
+/UserService/build/resources
+/UserService/src/main/resources/secret.properties
+/UserService/build/reports
+/UserService/build/test-results
