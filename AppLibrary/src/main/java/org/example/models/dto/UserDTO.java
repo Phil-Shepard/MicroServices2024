@@ -1,6 +1,6 @@
 package org.example.models.dto;
 
-import org.example.models.enums.RecordState;
+import org.example.models.enums.UserState;
 
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -14,14 +14,14 @@ public class UserDTO extends EntityVersionDTO {
     private String email;
     private String username;
     private String password;
-    private RecordState state;
+    private UserState state;
     private Set<RoleDTO> roles;
 
     public UserDTO() {
         super(null, null, null);
     }
 
-    public Builder builder(){
+    public Builder builder() {
         return new Builder();
     }
 
@@ -30,7 +30,7 @@ public class UserDTO extends EntityVersionDTO {
         private String email;
         private String username;
         private String password;
-        private RecordState state;
+        private UserState state;
         private Set<RoleDTO> roles;
         private LocalDateTime creationDate;
         private LocalDateTime updateDate;
@@ -55,7 +55,7 @@ public class UserDTO extends EntityVersionDTO {
             return this;
         }
 
-        public Builder state(RecordState state) {
+        public Builder state(UserState state) {
             this.state = state;
             return this;
         }
@@ -113,11 +113,11 @@ public class UserDTO extends EntityVersionDTO {
         this.password = password;
     }
 
-    public RecordState getState() {
+    public UserState getState() {
         return state;
     }
 
-    public void setState(RecordState state) {
+    public void setState(UserState state) {
         this.state = state;
     }
 
