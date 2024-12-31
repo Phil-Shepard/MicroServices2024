@@ -6,6 +6,8 @@
 /AppLibrary/build/tmp/
 /AppLibrary/build/generated/
 /AppLibrary/build/classes/
+/AppLibrary/build/reports/
+/AppLibrary/build/test-results/
 ## MailSender
 /MailSender/.gradle
 /MailSender/build/tmp/
