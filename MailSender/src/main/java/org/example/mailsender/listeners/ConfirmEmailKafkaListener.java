@@ -1,9 +1,8 @@
 package org.example.mailsender.listeners;
 
-import org.example.mailsender.models.dto.EmailMessage;
 import org.example.mailsender.services.EmailService;
+import org.example.models.dto.EmailMessage;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
