@@ -1,10 +1,8 @@
-package org.example.mailsender.models.dto;
+package org.example.models.dto;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.example.models.dto.AppDto;
 
-import java.io.Serializable;
 import java.util.Objects;
 
 /**

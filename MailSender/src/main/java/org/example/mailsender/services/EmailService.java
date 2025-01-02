@@ -1,6 +1,7 @@
 package org.example.mailsender.services;
 
-import org.example.mailsender.models.dto.EmailMessage;
+
+import org.example.models.dto.EmailMessage;
 
 /**
  * @author Tribushko Danil

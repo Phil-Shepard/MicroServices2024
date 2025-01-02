@@ -1,8 +1,8 @@
 package org.example.mailsender.services.imp;
 
 import jakarta.annotation.PostConstruct;
-import org.example.mailsender.models.dto.EmailMessage;
 import org.example.mailsender.services.EmailService;
+import org.example.models.dto.EmailMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
