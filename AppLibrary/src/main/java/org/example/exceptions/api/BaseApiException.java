@@ -21,7 +21,7 @@ public abstract class BaseApiException extends RuntimeException {
         this.timestamp = LocalDateTime.now();
         this.log = LoggerFactory.getLogger(this.getClass());
 
-        String errorLog = String.format("{}: {}", statusCode, message);
+        String errorLog = String.format("%s: %s", statusCode, message);
 
         log.warn(errorLog);
     }
