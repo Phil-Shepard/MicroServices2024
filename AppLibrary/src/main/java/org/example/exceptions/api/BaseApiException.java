@@ -10,12 +10,13 @@ import java.time.LocalDateTime;
  * @since 08.12.2024
  * Базовый класс исключений приложения
  */
-public abstract class BaseApiException extends RuntimeException {
+public class BaseApiException extends RuntimeException {
     protected int statusCode;
     protected String message;
     protected LocalDateTime timestamp;
     protected Logger log;
-    protected BaseApiException(int statusCode, String message) {
+
+    public BaseApiException(int statusCode, String message) {
         this.statusCode = statusCode;
         this.message = message;
         this.timestamp = LocalDateTime.now();
