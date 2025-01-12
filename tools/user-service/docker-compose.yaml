@@ -1,0 +1,82 @@
+version: '4.9'
+services:
+  eureka-server:
+    hostname: eureka
+    container_name: eureka
+    image: daniltribushko26/eureka-server:0.0.1
+    ports:
+      - '8001:8001'
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka:8001/eureka
+  db:
+    container_name: 'db_microservices'
+    image: postgres
+    volumes:
+      - /var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_DB=docker_microservices_2024_db
+    ports:
+      - "5432"
+  zookeeper:
+    container_name: zookeeper
+    image: confluentinc/cp-zookeeper:latest
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - '22181:2181'
+  kafka:
+    container_name: kafka
+    image: confluentinc/cp-kafka:latest
+    depends_on:
+      - zookeeper
+    ports:
+      - '9092:9092'
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+  mail-sender:
+    container_name: mail-sender
+    image: daniltribushko26/mail-sender:0.0.1
+    depends_on:
+      - zookeeper
+      - kafka
+      - eureka-server
+    environment:
+      KAFKA_PREFIX: mail-sender
+      KAFKA_CONFIRMEMAIL: confirm-email
+      SPRING_KAFKA_BOOTSTRAPSERVERS: kafka:29092
+    ports:
+      - '8002:8002'
+  user-service:
+    container_name: user-service
+    image: daniltribushko26/user-service:0.0.1
+    ports:
+      - '8004:8004'
+    depends_on:
+      - zookeeper
+      - kafka
+      - eureka-server
+      - db
+    environment:
+      SPRING_KAFKA_BOOTSTRAPSERVERS: kafka:29092
+      KAFKA_CONFIRMEMAIL: mail-sender.confirm-email
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka:8001/eureka
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/docker_microservices_2024_db
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 123
+  api-gateway:
+    container_name: api-gateway
+    image: daniltribushko26/api-gateway:0.0.1
+    ports:
+      - '8083:8083'
+    depends_on:
+      - eureka-server
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka:8001/eureka
