@@ -30,6 +30,6 @@ public interface UserService extends EntityService<UserDTO>, UserDetailsService 
             Integer page,
             @Min(value = 1, message = "Количество сущностей на одной странице должно быть больше еденицы")
             Integer perPage,
-            Role role
+            String role
     );
 }

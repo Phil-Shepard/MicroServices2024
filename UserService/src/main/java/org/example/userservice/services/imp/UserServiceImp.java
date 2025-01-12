@@ -8,6 +8,7 @@ import org.example.userservice.models.exceptions.*;
 import org.example.userservice.models.mappers.UserMapper;
 import org.example.userservice.repositories.UserPaginationRepository;
 import org.example.userservice.repositories.UserRepository;
+import org.example.userservice.services.RoleService;
 import org.example.userservice.services.UserService;
 import org.example.userservice.validators.UserDtoValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,16 +30,19 @@ public class UserServiceImp implements UserService {
     private final UserRepository userRepository;
     private final UserPaginationRepository userPaginationRepository;
     private final UserDtoValidator userDtoValidator;
+    private final RoleService roleService;
 
     @Autowired
     public UserServiceImp(
             UserRepository userRepository,
             UserDtoValidator userDtoValidator,
-            UserPaginationRepository userPaginationRepository
+            UserPaginationRepository userPaginationRepository,
+            RoleService roleService
     ) {
         this.userRepository = userRepository;
         this.userDtoValidator = userDtoValidator;
         this.userPaginationRepository = userPaginationRepository;
+        this.roleService = roleService;
     }
 
     @Override
@@ -54,8 +58,11 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public List<UserDTO> findAll(Integer page, Integer perPage, Role role) {
-        return userPaginationRepository.findAll(PageRequest.of(page, perPage))
+    public List<UserDTO> findAll(Integer page, Integer perPage, String role) {
+        return userPaginationRepository.findAllByRole(
+                        PageRequest.of(page, perPage),
+                        roleService.getByName(role)
+                )
                 .map(UserMapper::toDTO)
                 .toList();
     }

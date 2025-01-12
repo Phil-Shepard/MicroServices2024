@@ -1,6 +1,9 @@
 package org.example.userservice.repositories;
 
+import org.example.userservice.models.entities.Role;
 import org.example.userservice.models.entities.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,4 +14,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface UserPaginationRepository extends PagingAndSortingRepository<User, Long> {
+    Page<User> findAllByRole(Pageable pageable, Role role);
 }
