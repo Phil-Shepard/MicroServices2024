@@ -59,7 +59,7 @@ public class UserServiceImp implements UserService {
 
     @Override
     public List<UserDTO> findAll(Integer page, Integer perPage, String role) {
-        return userPaginationRepository.findAllByRole(
+        return userPaginationRepository.findAllByRolesContains(
                         PageRequest.of(page, perPage),
                         roleService.getByName(role)
                 )

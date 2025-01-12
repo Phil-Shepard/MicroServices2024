@@ -1,10 +1,21 @@
 server:
-  port: 9090
+  port: 8083
 spring:
   application:
     name: ApiGateway
-  kafka:
-    bootstrap-servers: localhost:9092
+  main:
+    web-application-type: reactive
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes[0]:
+        id: UserService
+        uri: lb://UserService
+        predicates:
+          - Path=/users/**, /auth/**
 eureka:
   client:
     service-url:
