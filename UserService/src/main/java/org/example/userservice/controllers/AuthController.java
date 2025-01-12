@@ -1,6 +1,7 @@
 package org.example.userservice.controllers;
 
 import jakarta.validation.Valid;
+import org.example.models.dto.UserDTO;
 import org.example.userservice.models.dto.ConfirmEmailDto;
 import org.example.userservice.models.dto.JwtTokenDto;
 import org.example.userservice.models.dto.SignInRequest;

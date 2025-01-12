@@ -14,5 +14,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface UserPaginationRepository extends PagingAndSortingRepository<User, Long> {
-    Page<User> findAllByRole(Pageable pageable, Role role);
+    Page<User> findAllByRolesContains(Pageable pageable, Role role);
 }
