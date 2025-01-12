@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: TaskService
+  datasource:
+    url: jdbc:postgresql://localhost:5432/microservices_2024_db
+    username: root
+    password: 123
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+  kafka:
+    bootstrap-servers: localhost:9092
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8001/eureka
+  instance:
+    hostname: localhost
+server:
+  port: 0

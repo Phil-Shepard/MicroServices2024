@@ -44,4 +44,9 @@ public class AuthController {
         authService.sendCode(email);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
+
+    @GetMapping("/token")
+    public ResponseEntity<UserDTO> getFromToken(@RequestBody JwtTokenDto token) {
+        return ResponseEntity.status(HttpStatus.OK).body(authService.getUserFromToken(token));
+    }
 }
