@@ -10,4 +10,5 @@ import org.example.userservice.models.entities.Role;
 public interface RoleService {
     Role getUserRole();
     Role getAdminRole();
+    Role getByName(String roleName);
 }

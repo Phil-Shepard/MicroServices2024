@@ -33,4 +33,11 @@ public class RoleServiceImp implements RoleService {
                 .findByName("ADMIN")
                 .orElseThrow(() -> new RoleByNameNotFoundException("ADMIN"));
     }
+
+    @Override
+    public Role getByName(String roleName) {
+        return roleRepository
+                .findByName(roleName)
+                .orElseThrow(() -> new RoleByNameNotFoundException(roleName));
+    }
 }
