@@ -1,2 +1,28 @@
 # Project exclude paths
 /target/
+/.idea/
+## AppLibrary
+/AppLibrary/.gradle
+/AppLibrary/build/tmp/
+/AppLibrary/build/generated/
+/AppLibrary/build/classes/
+/AppLibrary/build/reports/
+/AppLibrary/build/test-results/
+## MailSender
+/MailSender/.gradle
+/MailSender/build/tmp/
+/MailSender/build/generated/
+/MailSender/build/classes/
+/MailSender/build/resources
+/MailSender/src/main/resources/secret.properties
+/MailSender/build/reports
+/MailSender/build/test-results
+## UserService
+/UserService/.gradle
+/UserService/build/tmp/
+/UserService/build/generated/
+/UserService/build/classes/
+/UserService/build/resources
+/UserService/src/main/resources/secret.properties
+/UserService/build/reports
+/UserService/build/test-results
